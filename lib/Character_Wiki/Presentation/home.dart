@@ -130,6 +130,11 @@ class _HomeState extends State<Home> {
                 ),
               ),
             ),
+            SizedBox(height: 10,),
+            ElevatedButton(
+              onPressed: (){}, 
+              child: const Text('Clear Filters')
+              )
           ],
         ),
       ),
