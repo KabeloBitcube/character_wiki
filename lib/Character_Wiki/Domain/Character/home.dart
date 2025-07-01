@@ -1,4 +1,6 @@
+import 'package:character_wiki/Character_Wiki/Presentation/Bloc/Character/character_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -8,7 +10,11 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  bool isSelected = false;
+  @override
+  void initState() {
+    super.initState();
+    context.read<CharacterBloc>().add(const FetchCharacters());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +33,7 @@ class _HomeState extends State<Home> {
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  const Text('Characters'),
-                ],
+                children: [const Text('Characters')],
               ),
             ),
             Padding(
@@ -74,9 +78,7 @@ class _HomeState extends State<Home> {
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  const Text('Episode'),
-                ],
+                children: [const Text('Episode')],
               ),
             ),
             Padding(
@@ -89,12 +91,21 @@ class _HomeState extends State<Home> {
                     DropdownMenu(
                       label: Text('Choose'),
                       dropdownMenuEntries: <DropdownMenuEntry<String>>[
-                        DropdownMenuEntry(value: 'Episode 1', label: 'Episode 1'),
-                        DropdownMenuEntry(value: 'Episode 2', label: 'Episode 2'),
-                        DropdownMenuEntry(value: 'Episode 3', label: 'Episode 3'),
+                        DropdownMenuEntry(
+                          value: 'Episode 1',
+                          label: 'Episode 1',
+                        ),
+                        DropdownMenuEntry(
+                          value: 'Episode 2',
+                          label: 'Episode 2',
+                        ),
+                        DropdownMenuEntry(
+                          value: 'Episode 3',
+                          label: 'Episode 3',
+                        ),
                       ],
                     ),
-                    
+
                     SizedBox(width: 10),
                   ],
                 ),
@@ -104,9 +115,7 @@ class _HomeState extends State<Home> {
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  const Text('Location'),
-                ],
+                children: [const Text('Location')],
               ),
             ),
             Padding(
@@ -119,22 +128,31 @@ class _HomeState extends State<Home> {
                     DropdownMenu(
                       label: Text('Choose'),
                       dropdownMenuEntries: <DropdownMenuEntry<String>>[
-                        DropdownMenuEntry(value: 'Location 1', label: 'Location 1'),
-                        DropdownMenuEntry(value: 'Location 2', label: 'Location 2'),
-                        DropdownMenuEntry(value: 'Location 3', label: 'Location 3'),
+                        DropdownMenuEntry(
+                          value: 'Location 1',
+                          label: 'Location 1',
+                        ),
+                        DropdownMenuEntry(
+                          value: 'Location 2',
+                          label: 'Location 2',
+                        ),
+                        DropdownMenuEntry(
+                          value: 'Location 3',
+                          label: 'Location 3',
+                        ),
                       ],
                     ),
-                    
+
                     SizedBox(width: 10),
                   ],
                 ),
               ),
             ),
-            SizedBox(height: 10,),
+            SizedBox(height: 10),
             ElevatedButton(
-              onPressed: (){}, 
-              child: const Text('Clear Filters')
-              )
+              onPressed: () {},
+              child: const Text('Clear Filters'),
+            ),
           ],
         ),
       ),
@@ -171,42 +189,64 @@ class _HomeState extends State<Home> {
               ],
             ),
             SizedBox(height: 10),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.7,
-              child: SingleChildScrollView(
-                child: GridView.builder(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 8.0,
-                    mainAxisSpacing: 8.0,
-                  ),
-                  itemCount: 16,
-                  itemBuilder: (context, index) {
-                    return GestureDetector(
-                      onTap: () {
-                        isSelected = true;
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.blueGrey,
-                          border: Border.all(
-                            color: isSelected == true
-                                ? Colors.white54
-                                : Colors.transparent,
-                            width: 2,
-                          ),
-                          borderRadius: BorderRadius.circular(8),
+            BlocBuilder<CharacterBloc, CharacterState>(
+              builder: (context, state) {
+                if (state is CharacterLoading) {
+                  return const Center(child: CircularProgressIndicator());
+                } else if (state is CharacterLoaded) {
+                  return SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.7,
+                    child: SingleChildScrollView(
+                      child: GridView.builder(
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          crossAxisSpacing: 8.0,
+                          mainAxisSpacing: 8.0,
                         ),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
+                        itemCount: state.characters.length,
+                        itemBuilder: (context, index) {
+                          final character = state.characters[index];
+                          return GestureDetector(
+                            onTap: () {},
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.blueGrey,
+                                border: Border.all(
+                                  color: Colors.transparent,
+                                  width: 2,
+                                ),
+                                borderRadius: BorderRadius.circular(8),
+                                image: DecorationImage(
+                                  image: NetworkImage(character.image),
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                              child: Align(
+                                alignment: Alignment.bottomCenter,
+                                child: Container(
+                                  color: Colors.black54,
+                                  padding: const EdgeInsets.all(6),
+                                  child: Text(
+                                    character.name,
+                                    style: const TextStyle(color: Colors.white),
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          );
+                        },
                       ),
-                    );
-                  },
-                ),
-              ),
+                    ),
+                  );
+                } else if (state is CharacterError) {
+                  return Center(child: Text('Error: ${state.message}'));
+                }
+
+                return const SizedBox.shrink();
+              },
             ),
           ],
         ),
