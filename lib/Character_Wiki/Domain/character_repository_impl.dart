@@ -28,7 +28,7 @@ class CharacterRepositoryImpl implements CharacterRepository {
       image: model.image, 
       origin: model.origin, 
       location: model.location, 
-      epsiodes: model.epsiodes
+      epsiodes: model.episodes
       )).toList();
   }
 }

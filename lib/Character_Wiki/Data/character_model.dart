@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 class CharacterModel {
   final int id;
   final String name;
@@ -8,7 +7,7 @@ class CharacterModel {
   final String image;
   final String origin;
   final String location;
-  final List<String> epsiodes;
+  final List<String> episodes;
 
   CharacterModel({
     required this.id,
@@ -19,20 +18,20 @@ class CharacterModel {
     required this.image,
     required this.origin,
     required this.location,
-    required this.epsiodes,
+    required this.episodes,
   });
 
-  factory CharacterModel.fromJson (Map<String, dynamic> json) {
+  factory CharacterModel.fromJson(Map<String, dynamic> json) {
     return CharacterModel(
-      id: json['id'], 
-      name: json['name'], 
-      status: json['status'], 
-      species: json['species'], 
-      gender: json['gender'], 
-      image: json['image'], 
-      origin: json['origin'], 
-      location: json['location'], 
-      epsiodes: List<String>.from(json['epsidoes'])
-      );
+      id: json['id'],
+      name: json['name'],
+      status: json['status'],
+      species: json['species'],
+      gender: json['gender'],
+      image: json['image'],
+      origin: json['origin']['name'],
+      location: json['location']['name'],
+      episodes: List<String>.from(json['episode']),
+    );
   }
 }

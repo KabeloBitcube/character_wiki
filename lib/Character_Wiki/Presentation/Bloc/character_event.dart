@@ -9,17 +9,12 @@ abstract class CharacterEvent extends Equatable {
 }
 
 class FetchCharacters extends CharacterEvent {
-  final String name;
-  final String status;
-  final String species;
-  final String gender;
+  final String? name;
+  final String? status;
+  final String? species;
+  final String? gender;
 
-  const FetchCharacters({
-    required this.name,
-    required this.status,
-    required this.species,
-    required this.gender,
-  });
+  const FetchCharacters({this.name, this.status, this.species, this.gender});
 
   @override
   List<Object?> get props => [name, status, species, gender];
