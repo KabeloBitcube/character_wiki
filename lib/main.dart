@@ -1,4 +1,4 @@
-import 'package:character_wiki/Character_Wiki/Presentation/home.dart';
+import 'package:character_wiki/Character_Wiki/Presentation/Home/home.dart';
 import 'package:flutter/material.dart';
 
 void main() {
