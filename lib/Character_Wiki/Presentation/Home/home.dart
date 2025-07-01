@@ -70,7 +70,121 @@ class _HomeState extends State<Home> {
                         itemBuilder: (context, index) {
                           final character = state.characters[index];
                           return GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              showModalBottomSheet<void>(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return Container(
+                                    height:
+                                        MediaQuery.of(context).size.height *
+                                        0.8,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(10),
+                                        topRight: Radius.circular(10),
+                                      ),
+                                    ),
+                                    child: SingleChildScrollView(
+                                      child: Center(
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: <Widget>[
+                                            SizedBox(height: 20,),
+                                            Text(
+                                              character.name,
+                                              style: TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                            const SizedBox(height: 10),
+                                            Image(
+                                              image: NetworkImage(
+                                                character.image,
+                                              ),
+                                            ),
+                                            const SizedBox(height: 10),
+                                            Container(
+                                              height: 30,
+                                              width: 150,
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    (character.status ==
+                                                        "Alive")
+                                                    ? Colors.green
+                                                    : (character.status ==
+                                                          "Dead")
+                                                    ? Colors.red
+                                                    : Colors.grey,
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                              ),
+                                              child: Center(
+                                                child: Text(character.status),
+                                              ),
+                                            ),
+                                            const SizedBox(height: 10),
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    const Text(
+                                                      'Location: ',
+                                                      style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                      ),
+                                                    ),
+                                                    Text(character.location),
+                                                  ],
+                                                ),
+                                                const SizedBox(height: 10),
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    const Text(
+                                                      'Origin: ',
+                                                      style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                      ),
+                                                    ),
+                                                    Text(character.origin),
+                                                  ],
+                                                ),
+                                                const SizedBox(height: 10),
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    const Text(
+                                                      'Species: ',
+                                                      style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                      ),
+                                                    ),
+                                                    Text(character.species),
+                                                  ],
+                                                ),
+                                                const SizedBox(height: 20),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              );
+                            },
                             child: Container(
                               decoration: BoxDecoration(
                                 color: Colors.blueGrey,
@@ -105,7 +219,7 @@ class _HomeState extends State<Home> {
                 } else if (state is CharacterError) {
                   return Center(child: Text('Error: ${state.message}'));
                 }
-        
+
                 return const SizedBox.shrink();
               },
             ),
@@ -148,7 +262,10 @@ class _HomeState extends State<Home> {
                   children: [
                     const Text(
                       'Filters',
-                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ],
                 ),
@@ -173,7 +290,10 @@ class _HomeState extends State<Home> {
                             dropdownMenuEntries: <DropdownMenuEntry<String>>[
                               DropdownMenuEntry(value: 'Alive', label: 'Alive'),
                               DropdownMenuEntry(value: 'Dead', label: 'Dead'),
-                              DropdownMenuEntry(value: 'Unknown', label: 'Unknown'),
+                              DropdownMenuEntry(
+                                value: 'Unknown',
+                                label: 'Unknown',
+                              ),
                             ],
                           ),
                         ],
@@ -197,9 +317,15 @@ class _HomeState extends State<Home> {
                           DropdownMenu(
                             label: Text('Gender'),
                             dropdownMenuEntries: <DropdownMenuEntry<String>>[
-                              DropdownMenuEntry(value: 'Female', label: 'Female'),
+                              DropdownMenuEntry(
+                                value: 'Female',
+                                label: 'Female',
+                              ),
                               DropdownMenuEntry(value: 'Male', label: 'Male'),
-                              DropdownMenuEntry(value: 'Unknown', label: 'Unknown'),
+                              DropdownMenuEntry(
+                                value: 'Unknown',
+                                label: 'Unknown',
+                              ),
                             ],
                           ),
                         ],
@@ -209,7 +335,7 @@ class _HomeState extends State<Home> {
                   ),
                 ),
               ),
-              const SizedBox(height: 30,),
+              const SizedBox(height: 30),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
@@ -227,12 +353,21 @@ class _HomeState extends State<Home> {
                       DropdownMenu(
                         label: Text('Choose'),
                         dropdownMenuEntries: <DropdownMenuEntry<String>>[
-                          DropdownMenuEntry(value: 'Episode 1', label: 'Episode 1'),
-                          DropdownMenuEntry(value: 'Episode 2', label: 'Episode 2'),
-                          DropdownMenuEntry(value: 'Episode 3', label: 'Episode 3'),
+                          DropdownMenuEntry(
+                            value: 'Episode 1',
+                            label: 'Episode 1',
+                          ),
+                          DropdownMenuEntry(
+                            value: 'Episode 2',
+                            label: 'Episode 2',
+                          ),
+                          DropdownMenuEntry(
+                            value: 'Episode 3',
+                            label: 'Episode 3',
+                          ),
                         ],
                       ),
-          
+
                       SizedBox(width: 10),
                     ],
                   ),
@@ -269,7 +404,7 @@ class _HomeState extends State<Home> {
                           ),
                         ],
                       ),
-          
+
                       SizedBox(width: 10),
                     ],
                   ),
@@ -283,9 +418,12 @@ class _HomeState extends State<Home> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Icon(Icons.clear, color: Colors.white,),
+                      const Icon(Icons.clear, color: Colors.white),
                       SizedBox(width: 5),
-                      const Text('Clear Filters', style: TextStyle(color: Colors.white),),
+                      const Text(
+                        'Clear Filters',
+                        style: TextStyle(color: Colors.white),
+                      ),
                     ],
                   ),
                 ),
