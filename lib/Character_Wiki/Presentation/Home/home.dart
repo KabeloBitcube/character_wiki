@@ -163,34 +163,45 @@ class _HomeState extends State<Home> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: SizedBox(
-                  height: 100,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
+                  height: 200,
+                  child: Column(
                     children: [
-                      DropdownMenu(
-                        label: Text('Status'),
-                        dropdownMenuEntries: <DropdownMenuEntry<String>>[
-                          DropdownMenuEntry(value: 'Alive', label: 'Alive'),
-                          DropdownMenuEntry(value: 'Dead', label: 'Dead'),
-                          DropdownMenuEntry(value: 'Unknown', label: 'Unknown'),
+                      Row(
+                        children: [
+                          DropdownMenu(
+                            label: Text('Status'),
+                            dropdownMenuEntries: <DropdownMenuEntry<String>>[
+                              DropdownMenuEntry(value: 'Alive', label: 'Alive'),
+                              DropdownMenuEntry(value: 'Dead', label: 'Dead'),
+                              DropdownMenuEntry(value: 'Unknown', label: 'Unknown'),
+                            ],
+                          ),
                         ],
                       ),
-                      SizedBox(width: 10),
-                      DropdownMenu(
-                        label: Text('Species'),
-                        dropdownMenuEntries: <DropdownMenuEntry<String>>[
-                          DropdownMenuEntry(value: 'Human', label: 'Human'),
-                          DropdownMenuEntry(value: 'Alien', label: 'Alien'),
-                          DropdownMenuEntry(value: 'Robot', label: 'Robot'),
+                      SizedBox(height: 10),
+                      Row(
+                        children: [
+                          DropdownMenu(
+                            label: Text('Species'),
+                            dropdownMenuEntries: <DropdownMenuEntry<String>>[
+                              DropdownMenuEntry(value: 'Human', label: 'Human'),
+                              DropdownMenuEntry(value: 'Alien', label: 'Alien'),
+                              DropdownMenuEntry(value: 'Robot', label: 'Robot'),
+                            ],
+                          ),
                         ],
                       ),
-                      SizedBox(width: 10),
-                      DropdownMenu(
-                        label: Text('Gender'),
-                        dropdownMenuEntries: <DropdownMenuEntry<String>>[
-                          DropdownMenuEntry(value: 'Female', label: 'Female'),
-                          DropdownMenuEntry(value: 'Male', label: 'Male'),
-                          DropdownMenuEntry(value: 'Unknown', label: 'Unknown'),
+                      SizedBox(height: 10),
+                      Row(
+                        children: [
+                          DropdownMenu(
+                            label: Text('Gender'),
+                            dropdownMenuEntries: <DropdownMenuEntry<String>>[
+                              DropdownMenuEntry(value: 'Female', label: 'Female'),
+                              DropdownMenuEntry(value: 'Male', label: 'Male'),
+                              DropdownMenuEntry(value: 'Unknown', label: 'Unknown'),
+                            ],
+                          ),
                         ],
                       ),
                       SizedBox(width: 10),
@@ -198,6 +209,7 @@ class _HomeState extends State<Home> {
                   ),
                 ),
               ),
+              const SizedBox(height: 30,),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
