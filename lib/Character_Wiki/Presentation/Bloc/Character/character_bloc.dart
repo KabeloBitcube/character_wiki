@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:bloc/bloc.dart';
-import 'package:character_wiki/Character_Wiki/Domain/character.dart';
-import 'package:character_wiki/Character_Wiki/Domain/get_characters.dart';
+import 'package:character_wiki/Character_Wiki/Domain/Character/character.dart';
+import 'package:character_wiki/Character_Wiki/Domain/Character/get_characters.dart';
 import 'package:equatable/equatable.dart';
 part 'character_event.dart';
 part 'character_state.dart';

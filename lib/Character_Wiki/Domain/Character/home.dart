@@ -1,4 +1,4 @@
-import 'package:character_wiki/Character_Wiki/Presentation/Bloc/character_bloc.dart';
+import 'package:character_wiki/Character_Wiki/Presentation/Bloc/Character/character_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
