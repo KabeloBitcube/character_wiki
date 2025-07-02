@@ -248,9 +248,9 @@ class _HomeState extends State<Home> {
               context.read<EpisodeBloc>().add(FetchEpisodes());
               context.push('/episodes');
             },
-            child: Text('Episode'),
+            child: Text('Episodes'),
           ),
-          MaterialButton(onPressed: () {}, child: Text('Location')),
+          MaterialButton(onPressed: () {}, child: Text('Locations')),
         ],
       ),
     );
