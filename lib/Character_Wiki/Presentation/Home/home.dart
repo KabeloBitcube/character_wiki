@@ -379,8 +379,6 @@ class _HomeState extends State<Home> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Icon(Icons.clear, color: Colors.white),
-                      SizedBox(width: 5),
                       const Text(
                         'Clear Filters',
                         style: TextStyle(color: Colors.white),
