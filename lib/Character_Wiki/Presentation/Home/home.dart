@@ -1,6 +1,8 @@
 import 'package:character_wiki/Character_Wiki/Presentation/Bloc/Character/character_bloc.dart';
+import 'package:character_wiki/Character_Wiki/Presentation/Bloc/Episode/episode_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -91,7 +93,7 @@ class _HomeState extends State<Home> {
                                               MainAxisAlignment.center,
                                           mainAxisSize: MainAxisSize.min,
                                           children: <Widget>[
-                                            SizedBox(height: 20,),
+                                            SizedBox(height: 20),
                                             Text(
                                               character.name,
                                               style: TextStyle(
@@ -241,8 +243,14 @@ class _HomeState extends State<Home> {
             },
             child: Text('Characters'),
           ),
-          MaterialButton(onPressed: () {}, child: Text('Episode')),
-          MaterialButton(onPressed: () {}, child: Text('Location')),
+          MaterialButton(
+            onPressed: () {
+              context.read<EpisodeBloc>().add(FetchEpisodes());
+              context.push('/episodes');
+            },
+            child: Text('Episodes'),
+          ),
+          MaterialButton(onPressed: () {}, child: Text('Locations')),
         ],
       ),
     );

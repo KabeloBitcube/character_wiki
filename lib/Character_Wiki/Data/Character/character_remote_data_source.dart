@@ -29,7 +29,7 @@ class CharacterRemoteDataSource {
       return results.map((e) => CharacterModel.fromJson(e)).toList();
     }
     else{
-      throw Exception('Failed to load characters');
+      throw Exception('Failed to load characters: Status ${response.statusCode}');
     }
   }
 }
