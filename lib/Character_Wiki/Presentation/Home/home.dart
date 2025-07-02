@@ -278,6 +278,7 @@ class _HomeState extends State<Home> {
                   ],
                 ),
               ),
+              const SizedBox(height: 20,),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
@@ -288,7 +289,7 @@ class _HomeState extends State<Home> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: SizedBox(
-                  height: 200,
+                  height: 250,
                   child: Column(
                     children: [
                       Row(
@@ -306,7 +307,7 @@ class _HomeState extends State<Home> {
                           ),
                         ],
                       ),
-                      SizedBox(height: 10),
+                      SizedBox(height: 20),
                       Row(
                         children: [
                           DropdownMenu(
@@ -319,7 +320,7 @@ class _HomeState extends State<Home> {
                           ),
                         ],
                       ),
-                      SizedBox(height: 10),
+                      SizedBox(height: 20),
                       Row(
                         children: [
                           DropdownMenu(
@@ -344,80 +345,6 @@ class _HomeState extends State<Home> {
                 ),
               ),
               const SizedBox(height: 30),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [const Text('Episode')],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: SizedBox(
-                  height: 100,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: [
-                      DropdownMenu(
-                        label: Text('Choose'),
-                        dropdownMenuEntries: <DropdownMenuEntry<String>>[
-                          DropdownMenuEntry(
-                            value: 'Episode 1',
-                            label: 'Episode 1',
-                          ),
-                          DropdownMenuEntry(
-                            value: 'Episode 2',
-                            label: 'Episode 2',
-                          ),
-                          DropdownMenuEntry(
-                            value: 'Episode 3',
-                            label: 'Episode 3',
-                          ),
-                        ],
-                      ),
-
-                      SizedBox(width: 10),
-                    ],
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [const Text('Location')],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: SizedBox(
-                  height: 100,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: [
-                      DropdownMenu(
-                        label: Text('Choose'),
-                        dropdownMenuEntries: <DropdownMenuEntry<String>>[
-                          DropdownMenuEntry(
-                            value: 'Location 1',
-                            label: 'Location 1',
-                          ),
-                          DropdownMenuEntry(
-                            value: 'Location 2',
-                            label: 'Location 2',
-                          ),
-                          DropdownMenuEntry(
-                            value: 'Location 3',
-                            label: 'Location 3',
-                          ),
-                        ],
-                      ),
-
-                      SizedBox(width: 10),
-                    ],
-                  ),
-                ),
-              ),
               SizedBox(height: 10),
               Padding(
                 padding: const EdgeInsets.all(10.0),
