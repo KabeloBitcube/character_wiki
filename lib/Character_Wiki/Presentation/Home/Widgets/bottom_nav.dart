@@ -18,13 +18,14 @@ class BottomNavBuilder extends StatelessWidget {
           MaterialButton(
             onPressed: () {
               context.read<CharacterBloc>().add(const FetchCharacters());
+               context.go('/');
             },
             child: Text('Characters'),
           ),
           MaterialButton(
             onPressed: () {
               context.read<EpisodeBloc>().add(FetchEpisodes());
-              context.push('/episodes');
+              context.go('/episodes');
             },
             child: Text('Episodes'),
           ),
