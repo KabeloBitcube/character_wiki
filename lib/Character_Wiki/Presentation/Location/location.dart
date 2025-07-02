@@ -5,17 +5,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-class EpisodeScreen extends StatelessWidget {
-  const EpisodeScreen({super.key});
+class LocationScreen extends StatelessWidget {
+  const LocationScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Episodes')),
+      appBar: AppBar(title: const Text('Locations')),
       bottomNavigationBar: bottomNavBuilder(context),
-      body: BlocBuilder<EpisodeBloc, EpisodeState>(
+      body: BlocBuilder<LocationBloc, LocationState>(
         builder: (context, state) {
-          if (state is EpisodeLoading) {
+          if (state is LocationLoading) {
             return Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
@@ -23,30 +23,30 @@ class EpisodeScreen extends StatelessWidget {
                 children: [const CircularProgressIndicator()],
               ),
             );
-          } else if (state is EpisodeLoaded) {
-            final episodes = state.episodes;
+          } else if (state is LocationLoaded) {
+            final locations = state.locations;
             return ListView.builder(
-              itemCount: episodes.length,
+              itemCount: locations.length,
               itemBuilder: (context, index) {
-                final episode = episodes[index];
+                final location = locations[index];
 
                 return ExpansionTile(
-                  title: Text(episode.name),
+                  title: Text(location.name),
                   subtitle: Text(
-                    '${episode.episode} - Aired on: ${episode.airDate}',
+                    '${location.type} - Dimension: ${location.dimension}',
                   ),
                   children: [
                     SizedBox(height: 15),
                     Text(
-                      'Number of characters:',
+                      'Number of residents:',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    Text(' ${episode.characters.length}'),
+                    Text(' ${location.residents.length}'),
                   ],
                 );
               },
             );
-          } else if (state is EpisodeError) {
+          } else if (state is LocationError) {
             return Center(child: Text('Error: ${state.message}'));
           } else {
             return SizedBox.shrink();
