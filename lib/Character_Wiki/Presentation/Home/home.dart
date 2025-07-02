@@ -1,5 +1,6 @@
 import 'package:character_wiki/Character_Wiki/Presentation/Bloc/Character/character_bloc.dart';
 import 'package:character_wiki/Character_Wiki/Presentation/Bloc/Episode/episode_bloc.dart';
+import 'package:character_wiki/Character_Wiki/Presentation/Bloc/Location/location_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -250,7 +251,13 @@ class _HomeState extends State<Home> {
             },
             child: Text('Episodes'),
           ),
-          MaterialButton(onPressed: () {}, child: Text('Locations')),
+          MaterialButton(
+            onPressed: () {
+              context.read<LocationBloc>().add(FetchLocations());
+              context.go('/locations');
+            },
+            child: Text('Locations'),
+          ),
         ],
       ),
     );
@@ -278,7 +285,7 @@ class _HomeState extends State<Home> {
                   ],
                 ),
               ),
-              const SizedBox(height: 20,),
+              const SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(

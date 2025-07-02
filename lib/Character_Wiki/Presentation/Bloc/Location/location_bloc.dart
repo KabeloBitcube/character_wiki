@@ -17,8 +17,8 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
     on<FetchLocations>((event, emit) async {
       emit(LocationLoading());
       try {
-        final location = await getLocations();
-        emit(LocationLoaded(location: location));
+        final locations = await getLocations();
+        emit(LocationLoaded(locations: locations));
       } catch (e) {
         emit(LocationError(message: e.toString()));
       }

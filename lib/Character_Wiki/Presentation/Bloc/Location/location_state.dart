@@ -12,12 +12,12 @@ final class LocationInitial extends LocationState {}
 final class LocationLoading extends LocationState {}
 
 final class LocationLoaded extends LocationState {
-  final List<Location> location;
+  final List<Location> locations;
 
-  const LocationLoaded({required this.location});
+  const LocationLoaded({required this.locations});
 
   @override
-  List<Object> get props => [location];
+  List<Object> get props => [locations];
 }
 
 final class LocationError extends LocationState {
