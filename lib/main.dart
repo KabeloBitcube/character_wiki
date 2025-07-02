@@ -1,5 +1,6 @@
 import 'package:character_wiki/Character_Wiki/Presentation/Bloc/Character/character_bloc.dart';
 import 'package:character_wiki/Character_Wiki/Presentation/Bloc/Episode/episode_bloc.dart';
+import 'package:character_wiki/Character_Wiki/Presentation/Bloc/Location/location_bloc.dart';
 import 'package:character_wiki/Character_Wiki/Presentation/Navigation/router.dart';
 import 'package:character_wiki/service_locator.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => CharacterBloc(sl())),
         BlocProvider(create: (context) => EpisodeBloc(sl())),
+        BlocProvider(create: (context) => LocationBloc(sl())),
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
