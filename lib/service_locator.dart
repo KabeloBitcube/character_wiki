@@ -1,6 +1,6 @@
-import 'package:character_wiki/Character_Wiki/Data/Character/character_remote_data_source.dart';
-import 'package:character_wiki/Character_Wiki/Data/Episode/episode_remote_data_source.dart';
-import 'package:character_wiki/Character_Wiki/Data/Location/location_remote_data_souce.dart';
+import 'package:character_wiki/Character_Wiki/Data/Character/DataSource/character_remote_data_source.dart';
+import 'package:character_wiki/Character_Wiki/Data/Episode/DataSource/episode_remote_data_source.dart';
+import 'package:character_wiki/Character_Wiki/Data/Location/DataSource/location_remote_data_souce.dart';
 import 'package:character_wiki/Character_Wiki/Domain/Character/character_repository.dart';
 import 'package:character_wiki/Character_Wiki/Domain/Character/character_repository_impl.dart';
 import 'package:character_wiki/Character_Wiki/Domain/Character/get_characters.dart';

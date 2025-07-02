@@ -1,5 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:character_wiki/Character_Wiki/Data/Location/location_remote_data_souce.dart';
+import 'package:character_wiki/Character_Wiki/Data/Location/DataSource/location_remote_data_souce.dart';
 import 'package:character_wiki/Character_Wiki/Domain/Location/location.dart';
 import 'package:character_wiki/Character_Wiki/Domain/Location/location_repository.dart';
 

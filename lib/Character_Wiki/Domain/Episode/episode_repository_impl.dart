@@ -1,5 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:character_wiki/Character_Wiki/Data/Episode/episode_remote_data_source.dart';
+import 'package:character_wiki/Character_Wiki/Data/Episode/DataSource/episode_remote_data_source.dart';
 import 'package:character_wiki/Character_Wiki/Domain/Episode/epsiode.dart';
 import 'package:character_wiki/Character_Wiki/Domain/Episode/epsiode_repository.dart';
 
