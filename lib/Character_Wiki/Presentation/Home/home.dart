@@ -356,12 +356,29 @@ class _HomeState extends State<Home> {
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: ElevatedButton(
+                  onPressed: () {
+                    context.read<CharacterBloc>().add(const FetchCharacters());
+                    context.pop();
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        'Filter',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: 10),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: ElevatedButton(
                   onPressed: () {},
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Icon(Icons.clear, color: Colors.white),
-                      SizedBox(width: 5),
                       const Text(
                         'Clear Filters',
                         style: TextStyle(color: Colors.white),
