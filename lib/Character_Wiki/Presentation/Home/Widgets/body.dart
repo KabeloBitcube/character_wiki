@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BodyBuilder extends StatelessWidget {
-  const BodyBuilder({super.key});
+  BodyBuilder({super.key});
+
+  final TextEditingController searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +20,7 @@ class BodyBuilder extends StatelessWidget {
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.8,
                   child: TextField(
+                    controller: searchController,
                     decoration: InputDecoration(
                       labelText: 'Search...',
                       border: OutlineInputBorder(
@@ -26,7 +29,12 @@ class BodyBuilder extends StatelessWidget {
                     ),
                   ),
                 ),
-                IconButton(onPressed: () {}, icon: Icon(Icons.search)),
+                IconButton(onPressed: () {
+                  final searchQuery = searchController.text.trim();
+                  if(searchQuery.isNotEmpty){
+                    context.read<CharacterBloc>().add(SearchCharacters(searchQuery: searchQuery));
+                  }
+                }, icon: Icon(Icons.search)),
               ],
             ),
             SizedBox(height: 10),
