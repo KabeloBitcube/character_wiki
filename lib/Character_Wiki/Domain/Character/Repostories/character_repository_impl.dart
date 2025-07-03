@@ -6,29 +6,26 @@ import 'package:character_wiki/Character_Wiki/Domain/Character/Repostories/chara
 class CharacterRepositoryImpl implements CharacterRepository {
   final CharacterRemoteDataSource remoteDataSource;
 
-  CharacterRepositoryImpl({
-    required this.remoteDataSource,
-  });
+  CharacterRepositoryImpl({required this.remoteDataSource});
 
   @override
-  Future<List<Character>> getCharacters({String? name, String? status, String? species, String? gender}) async {
-    final models = await remoteDataSource.getCharacters(
-      name : name,
-      status: status,
-      species: species,
-      gender: gender
-    );
+  Future<List<Character>> getCharacters() async {
+    final models = await remoteDataSource.getCharacters();
 
-    return models.map((model) => Character(
-      id: model.id, 
-      name: model.name, 
-      status: model.status, 
-      species: model.species, 
-      gender: model.gender, 
-      image: model.image, 
-      origin: model.origin, 
-      location: model.location, 
-      epsiodes: model.episodes
-      )).toList();
+    return models
+        .map(
+          (model) => Character(
+            id: model.id,
+            name: model.name,
+            status: model.status,
+            species: model.species,
+            gender: model.gender,
+            image: model.image,
+            origin: model.origin,
+            location: model.location,
+            epsiodes: model.episodes,
+          ),
+        )
+        .toList();
   }
 }

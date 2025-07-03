@@ -5,16 +5,9 @@ import 'package:character_wiki/Character_Wiki/Domain/Character/Repostories/chara
 class GetCharacters {
   final CharacterRepository repository;
 
-  GetCharacters({
-    required this.repository,
-  });
-  
-  Future<List<Character>> call ({String? name, String? status, String? species, String? gender}) async {
-    return repository.getCharacters(
-      name: name,
-      status: status,
-      species: species,
-      gender: gender
-    );
+  GetCharacters({required this.repository});
+
+  Future<List<Character>> call() async {
+    return repository.getCharacters();
   }
 }
