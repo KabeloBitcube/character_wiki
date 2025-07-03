@@ -6,30 +6,21 @@ import 'package:http/http.dart' as http;
 
 class CharacterRemoteDataSource {
   final http.Client client;
-  
-  CharacterRemoteDataSource({
-    required this.client,
-  });
 
-  Future<List<CharacterModel>> getCharacters ({String? name, String? status, String? species, String? gender}) async {
-    final queryParams = {
-      'name' : name,
-      'status' : status, 
-      'species' : species,
-      'gender' : gender
-    };
+  CharacterRemoteDataSource({required this.client});
 
-    final uri = Uri.https('rickandmortyapi.com', '/api/character', queryParams);
+  Future<List<CharacterModel>> getCharacters() async {
+    final uri = Uri.parse('https://rickandmortyapi.com/api/character');
+    final response = await client.get(uri);
 
-    final response = await client.get(Uri.parse(uri.toString()));
-
-    if (response.statusCode == 200){
+    if (response.statusCode == 200) {
       final jsonBody = json.decode(response.body);
       final results = jsonBody['results'] as List;
       return results.map((e) => CharacterModel.fromJson(e)).toList();
-    }
-    else{
-      throw Exception('Failed to load characters: Status ${response.statusCode}');
+    } else {
+      throw Exception(
+        'Failed to load characters: Status ${response.statusCode}',
+      );
     }
   }
 }

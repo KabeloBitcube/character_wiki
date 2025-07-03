@@ -13,12 +13,7 @@ class CharacterBloc extends Bloc<CharacterEvent, CharacterState> {
     on<FetchCharacters>((event, emit) async {
       emit(CharacterLoading());
       try {
-        final characters = await getCharacters(
-          name: event.name,
-          status: event.status,
-          species: event.species,
-          gender: event.gender
-        );
+        final characters = await getCharacters();
         emit(CharacterLoaded(characters: characters));
       } catch (e) {
         emit(CharacterError(e.toString()));
