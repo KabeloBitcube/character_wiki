@@ -37,5 +37,23 @@ class CharacterBloc extends Bloc<CharacterEvent, CharacterState> {
         emit(CharacterError(e.toString()));
       }
     });
+
+    on<FilterCharacters>((event, emit) async {
+      emit(CharacterLoading());
+      try {
+        final characters = await getCharacters();
+        final filtered = characters.where((filter) {
+          final statusFilter = event.status == null || filter.status == event.status;
+          final speciesFilter = event.species == null || filter.species == event.species;
+          final genderFilter = event.gender == null || filter.gender == event.gender;
+
+          return statusFilter && speciesFilter && genderFilter;
+        }).toList();
+
+        emit(CharacterLoaded(characters: filtered));
+      } catch (e) {
+        emit(CharacterError(e.toString()));
+      }
+    });
   }
 }
