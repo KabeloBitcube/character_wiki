@@ -19,5 +19,23 @@ class CharacterBloc extends Bloc<CharacterEvent, CharacterState> {
         emit(CharacterError(e.toString()));
       }
     });
+
+    on<SearchCharacters>((event, emit) async {
+      emit(CharacterLoading());
+      try {
+        final characters = await getCharacters();
+        final filtered = characters
+            .where(
+              (searchQuery) => searchQuery.name.toLowerCase().contains(
+                event.searchQuery.toLowerCase(),
+              ),
+            )
+            .toList();
+
+        emit(CharacterLoaded(characters: filtered));
+      } catch (e) {
+        emit(CharacterError(e.toString()));
+      }
+    });
   }
 }
