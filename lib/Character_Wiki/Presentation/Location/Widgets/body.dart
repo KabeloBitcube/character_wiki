@@ -1,4 +1,5 @@
 import 'package:character_wiki/Character_Wiki/Presentation/Bloc/Location/location_bloc.dart';
+import 'package:character_wiki/Character_Wiki/Presentation/Location/Widgets/characters_from_locations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -31,11 +32,7 @@ class BodyBuilder extends StatelessWidget {
                 ),
                 children: [
                   SizedBox(height: 15),
-                  Text(
-                    'Number of residents:',
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  Text(' ${location.residents.length}'),
+                  CharactersFromLocations(characterUrls: location.residents)
                 ],
               );
             },
