@@ -1,4 +1,5 @@
 import 'package:character_wiki/Character_Wiki/Presentation/Bloc/Episode/episode_bloc.dart';
+import 'package:character_wiki/Character_Wiki/Presentation/Episode/Widgets/characters_from_epsiode.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -31,11 +32,7 @@ class BodyBuilder extends StatelessWidget {
                 ),
                 children: [
                   SizedBox(height: 15),
-                  Text(
-                    'Number of characters:',
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  Text(' ${episode.characters.length}'),
+                  CharactersFromEpisode(characterUrls: episode.characters)
                 ],
               );
             },
