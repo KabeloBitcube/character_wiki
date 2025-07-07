@@ -2,7 +2,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
-import 'package:character_wiki/Character_Wiki/Domain/Episode/Entity/epsiode.dart';
+import 'package:character_wiki/Character_Wiki/Domain/Episode/Entities/epsiode.dart';
 import 'package:character_wiki/Character_Wiki/Domain/Episode/UseCases/get_episodes.dart';
 
 part 'episode_event.dart';

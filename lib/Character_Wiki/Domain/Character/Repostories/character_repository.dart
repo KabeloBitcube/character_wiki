@@ -1,4 +1,4 @@
-import 'package:character_wiki/Character_Wiki/Domain/Character/Entity/character.dart';
+import 'package:character_wiki/Character_Wiki/Domain/Character/Entities/character.dart';
 
 abstract class CharacterRepository {
   Future<List<Character>> getCharacters ();

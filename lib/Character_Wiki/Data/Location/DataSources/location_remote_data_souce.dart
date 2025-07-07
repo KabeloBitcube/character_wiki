@@ -1,6 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
-import 'package:character_wiki/Character_Wiki/Data/Location/Model/location_model.dart';
+import 'package:character_wiki/Character_Wiki/Data/Location/Models/location_model.dart';
 import 'package:http/http.dart' as http;
 
 class LocationRemoteDataSouce {

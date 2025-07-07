@@ -3,7 +3,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
 import 'package:character_wiki/Character_Wiki/Domain/Location/UseCases/get_locations.dart';
-import 'package:character_wiki/Character_Wiki/Domain/Location/Entity/location.dart';
+import 'package:character_wiki/Character_Wiki/Domain/Location/Entities/location.dart';
 
 part 'location_event.dart';
 part 'location_state.dart';
